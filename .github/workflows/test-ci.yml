@@ -19,5 +19,6 @@ jobs:
             "tests/assets/assets.lua"
             "tests/game/game.lua"
             "tests/pfm/launch_pfm.lua"
+          working-directory: "pragma/build/install"
           artifacts-name: "assets"
           screenshot: true
