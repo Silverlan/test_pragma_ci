@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Run tests
         id: pragma
-        uses: Silverlan/pragma/github_actions/run_tests@main  # This points to the root directory of your repository where action.yml is located
+        uses: Silverlan/test_pragma_ci/github_actions/run_tests@main  # This points to the root directory of your repository where action.yml is located
         with:
           test-scripts: |
             "tests/assets/assets.lua"
