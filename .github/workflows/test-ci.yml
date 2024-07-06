@@ -16,7 +16,7 @@ jobs:
         if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
         with:
           workflow: pragma-release-notification.yml
-          inputs: '{ "webhook": "${{ secrets.webhook }}" }'
+          inputs: '{ "webhook": "${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}" }'
 
       - name: Checkout repository
         uses: actions/checkout@v4
