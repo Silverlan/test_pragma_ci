@@ -2,6 +2,10 @@ name: Release Notification
 
 on:
   workflow_dispatch:
+    inputs:
+      webhook:
+        type: string
+        required: true
 
 jobs:
   test:
@@ -16,7 +20,7 @@ jobs:
     steps:
       - name: Discord notification
         env:
-          DISCORD_WEBHOOK: https://discord.com/api/webhooks/1259038706719789056/1ZROMvpB6zsi7JfwoQTMw79GB3EO5S-rf41JEJQKKY9481637AAgQbAbonx-iMe8_bPU
+          DISCORD_WEBHOOK: ${{ github.event.inputs.webhook }}
         uses: Ilshidur/action-discord@master
         with:
           args: 'The project Test has been deployed.'
