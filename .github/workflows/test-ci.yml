@@ -20,11 +20,11 @@ jobs:
       - name: Download Assets
         shell: bash
         run: |
-          $url = "https://pragma-engine.com/share/addons.zip"
-          $output = "pragma/build/install/addons.zip"
-          Invoke-WebRequest -Uri $url -OutFile $output
-          Expand-Archive -Path $output -DestinationPath "pragma/build/install"
-          Remove-Item $output  # Clean up the zip file
+          url="https://pragma-engine.com/share/addons.zip"
+          output="pragma/build/install/addons.zip"
+          wget $url -O $output
+          unzip $output -d "pragma/build/install"
+          rm $output
 
       - name: Run tests
         id: pragma
