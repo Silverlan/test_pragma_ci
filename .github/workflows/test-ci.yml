@@ -17,21 +17,19 @@ jobs:
         with:
           working-directory: "pragma/build/install"
 
-      - name: Download Assets
-        shell: bash
-        run: |
-          url="https://pragma-engine.com/share/addons.zip"
-          output="pragma/build/install/addons.zip"
-          wget $url -O $output
-          unzip $output -d "pragma/build/install"
-          rm $output
+      - name: Tests Import
+        uses: actions/checkout@v4
+        with:
+          repository: Silverlan/pragma_tests_import
+          token: ${{ secrets.PRAGMA_TESTS_IMPORT_TOKEN }}
+          path: "pragma/build/install"
 
       - name: Run tests
         id: pragma
         uses: Silverlan/test_pragma_ci/github_actions/run_tests@main  # This points to the root directory of your repository where action.yml is located
         with:
           test-scripts: |
-            "tests/headcrab.lua"
+            "tests/import_assets.lua"
           working-directory: "pragma/build/install"
           artifacts-name: "assets"
           screenshot: true
