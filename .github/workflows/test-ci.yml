@@ -22,7 +22,13 @@ jobs:
         with:
           repository: Silverlan/pragma_tests_import
           token: ${{ secrets.PRAGMA_TESTS_IMPORT_TOKEN }}
-          path: "pragma/build/install"
+          path: "pragma_tests_import"
+
+      - name: Copy files to target directory
+        run: |
+          mkdir -p pragma/build/install
+          cp -r pragma_tests_import/* pragma/build/install/
+          rm -rf pragma_tests_import
 
       - name: Run tests
         id: pragma
