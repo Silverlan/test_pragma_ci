@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - name: Release Notifcation
-        uses: Silverlan/test_pragma_ci@main
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: pragma-release-notification.yml
 
       - name: Checkout repository
         uses: actions/checkout@v4
