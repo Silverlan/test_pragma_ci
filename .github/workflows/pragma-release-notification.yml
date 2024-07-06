@@ -6,6 +6,9 @@ on:
       webhook:
         type: string
         required: true
+      message:
+        type: string
+        required: true
 
 jobs:
   test:
@@ -23,4 +26,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ github.event.inputs.webhook }}
         uses: Ilshidur/action-discord@master
         with:
-          args: "A new nightly pre-release build has been generated! It is available for download here:\n<https://github.com/Silverlan/pragma/releases/tag/nightly>\n\nThis is NOT a stable release, use with caution! Only use this version for testing!"
+          args: "${{ github.event.inputs.message }}"
