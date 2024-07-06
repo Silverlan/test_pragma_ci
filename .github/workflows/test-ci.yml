@@ -26,8 +26,7 @@ jobs:
 
       - name: Copy files to target directory
         run: |
-          mkdir -p pragma/build/install
-          cp -r pragma_tests_import/* pragma/build/install/
+          cp -rf pragma_tests_import/* pragma/build/install/
           rm -rf pragma_tests_import
 
       - name: Run tests
