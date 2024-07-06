@@ -11,12 +11,21 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Release Notifcation
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Release Notification
         if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
         with:
-          workflow: pragma-release-notification.yml
-          inputs: '{ "webhook": "${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}" }'
+          args: "A new nightly pre-release build (${GITHUB_SHA::7}) has been generated! It is available for download here:\n<https://github.com/Silverlan/pragma/releases/tag/nightly>\n\nThis is NOT a stable release, use with caution! Only use this version for testing!"
+
+
+      #- name: Release Notifcation
+      #  uses: benc-uk/workflow-dispatch@v1
+      #  if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
+      #  with:
+      #    workflow: pragma-release-notification.yml
+      #    inputs: '{ "webhook": "${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}" }'
 
       - name: Checkout repository
         uses: actions/checkout@v4
