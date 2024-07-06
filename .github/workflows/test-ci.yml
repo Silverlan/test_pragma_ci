@@ -25,8 +25,9 @@ jobs:
           path: "pragma_tests_import"
 
       - name: Copy files to target directory
+        shell: bash
         run: |
-          cp -r pragma_tests_import/* pragma/build/install/
+          cp -rf pragma_tests_import/* pragma/build/install/
           rm -rf pragma_tests_import
 
       - name: Run tests
