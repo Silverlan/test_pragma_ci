@@ -37,6 +37,7 @@ jobs:
         shell: bash
         run: |
           cp -rf test_x.lua pragma/build/install/lua/tests/
+          cp -rf test_y.lua pragma/build/install/lua/tests/
 
       - name: Run tests
         id: pragma
@@ -44,7 +45,7 @@ jobs:
         with:
           test-scripts: |
             "tests/import_assets.lua"
-            "tests/test_x.lua"
+            "tests/test_y.lua"
           working-directory: "pragma/build/install"
           artifacts-name: "assets"
           screenshot: true
