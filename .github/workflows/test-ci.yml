@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: Release Notifcation
         uses: benc-uk/workflow-dispatch@v1
-        #if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
+        if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
         with:
-          workflow: pragma-server-tests-ci.yml
+          workflow: pragma-release-notification.yml
           inputs: '{ "os": "ubuntu" }'
 
       - name: Checkout repository
