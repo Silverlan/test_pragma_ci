@@ -11,14 +11,27 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Download Pragma
+        id: download
+        uses: Silverlan/test_pragma_ci/github_actions/download_pragma@main
+        with:
+          working-directory: "pragma/build/install"
+
+      - name: Download Assets
+        shell: bash
+        run: |
+          $url = "https://pragma-engine.com/share/addons.zip"
+          $output = "pragma/build/install/addons.zip"
+          Invoke-WebRequest -Uri $url -OutFile $output
+          Expand-Archive -Path $output -DestinationPath "pragma/build/install"
+          Remove-Item $output  # Clean up the zip file
+
       - name: Run tests
         id: pragma
         uses: Silverlan/test_pragma_ci/github_actions/run_tests@main  # This points to the root directory of your repository where action.yml is located
         with:
           test-scripts: |
-            "tests/assets/assets.lua"
-            "tests/game/game.lua"
-            "tests/pfm/launch_pfm.lua"
+            "tests/headcrab.lua"
           working-directory: "pragma/build/install"
           artifacts-name: "assets"
           screenshot: true
