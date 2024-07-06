@@ -16,7 +16,7 @@ jobs:
         if: ${{ github.repository == 'Silverlan/test_pragma_ci' }}
         with:
           workflow: pragma-release-notification.yml
-          inputs: '{ "webhook": "${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}", "message": "A new nightly pre-release build (${GITHUB_SHA::7}) has been generated! It is available for download here:\n<https://github.com/Silverlan/pragma/releases/tag/nightly>\n\nThis is NOT a stable release, use with caution! Only use this version for testing!" }'
+          inputs: '{ "webhook": "${{ secrets.PRAGMA_RELEASE_DISCORD_WEBHOOK }}", "message": "A new nightly pre-release build (${{ github.sha }}) has been generated! It is available for download here:\n<https://github.com/Silverlan/pragma/releases/tag/nightly>\n\nThis is NOT a stable release, use with caution! Only use this version for testing!" }'
 
       - name: Checkout repository
         uses: actions/checkout@v4
