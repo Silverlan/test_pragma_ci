@@ -1,0 +1,2 @@
+print("AAAA")
+return true
