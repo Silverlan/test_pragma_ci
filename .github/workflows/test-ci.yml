@@ -11,6 +11,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: https://discord.com/api/webhooks/1259038706719789056/1ZROMvpB6zsi7JfwoQTMw79GB3EO5S-rf41JEJQKKY9481637AAgQbAbonx-iMe8_bPU
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'The project AAA has been deployed.'
+
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
